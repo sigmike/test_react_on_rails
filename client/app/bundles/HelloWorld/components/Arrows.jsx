@@ -21,7 +21,7 @@ const Arrow = ({start, end, isEditing, isLoading, onStartClick, onEndClick}) => 
     height={100}
     fill={isEditing ? 'blue' : 'red'}
     style={isLoading ? {opacity: 0.5} : null}>
-      <g x={0}>
+      <g>
         <ArrowStart x={start.x} y={start.y} onClick={onStartClick} />
         <ArrowEnd x={end.x} y={end.y} onClick={onEndClick} />
       </g>
