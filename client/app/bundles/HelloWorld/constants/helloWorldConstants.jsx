@@ -5,6 +5,7 @@ import mirrorCreator from 'mirror-creator';
 
 const actionTypes = mirrorCreator([
   'HELLO_WORLD_NAME_UPDATE',
+  'EDIT_ARROW_START',
 ]);
 
 // actionTypes = {HELLO_WORLD_NAME_UPDATE: "HELLO_WORLD_NAME_UPDATE"}

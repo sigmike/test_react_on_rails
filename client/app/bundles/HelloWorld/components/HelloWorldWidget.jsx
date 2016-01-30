@@ -49,7 +49,7 @@ export default class HelloWorldWidget extends React.Component {
               onChange={this.handleChange}
             />
         </form>
-        <div style={{width: 600, height: 300, background: "#ccc", position: "relative"}}>
+        <div style={{width: 600, height: 300, background: "#ccc", position: "relative"}} onMouseDown={(e) => {e.preventDefault();}}>
           <Arrows/>
         </div>
       </div>

@@ -6,3 +6,10 @@ export function updateName(name) {
     name,
   };
 }
+
+export function editArrowStart(arrow) {
+  return {
+    type: actionTypes.EDIT_ARROW_START,
+    arrow: arrow,
+  };
+}
