@@ -7,8 +7,9 @@ const propTypes = {
   arrows: PropTypes.instanceOf(Immutable.List),
 };
 
-const ArrowStart = ({x, y, onMouseDown}) => {
-  return <circle key="start" cx={x} cy={y} r={5} onMouseDown={onMouseDown}/>;
+const ArrowStart = ({x, y, angle, onMouseDown}) => {
+  const transform = `translate(${x} ${y}) rotate(${angle})`;
+  return <polygon transform={transform} points="-5,0 5,0 0,10" onMouseDown={onMouseDown}/>;
 };
 
 const ArrowEnd = ({x, y, onClick}) => {
@@ -16,13 +17,22 @@ const ArrowEnd = ({x, y, onClick}) => {
 };
 
 const Arrow = ({start, end, isEditing, isLoading, onStartMouseDown, onEndClick}) => {
+  let angle = Math.atan2(start.y - end.y, start.x - end.x) * 180 / Math.PI - 90;
   return <svg xmlns="http://www.w3.org/svg/2000"
-    width={100}
-    height={100}
+    width={600}
+    height={300}
     fill={isEditing ? 'blue' : 'red'}
     style={isLoading ? {opacity: 0.5} : null}>
       <g>
-        <ArrowStart x={start.x} y={start.y} onMouseDown={onStartMouseDown} />
+        <line
+          x1={start.x}
+          y1={start.y}
+          x2={end.x}
+          y2={end.y}
+          stroke={'red'}
+          strokeWidth={2}
+        />
+        <ArrowStart x={start.x} y={start.y} angle={angle} onMouseDown={onStartMouseDown} />
         <ArrowEnd x={end.x} y={end.y} onClick={onEndClick} />
       </g>
   </svg>;
