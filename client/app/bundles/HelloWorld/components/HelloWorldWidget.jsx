@@ -4,6 +4,8 @@
 import React, { PropTypes } from 'react';
 import _ from 'lodash';
 import { Input } from 'react-bootstrap';
+import Arrows from './Arrows';
+import Immutable from 'immutable';
 
 // Simple example of a React "dumb" component
 export default class HelloWorldWidget extends React.Component {
@@ -12,6 +14,7 @@ export default class HelloWorldWidget extends React.Component {
     // passing two properties: "data" and "actions".
     updateName: PropTypes.func.isRequired,
     name: PropTypes.string.isRequired,
+    arrows: PropTypes.instanceOf(Immutable.List),
   };
 
   constructor(props, context) {
@@ -47,6 +50,7 @@ export default class HelloWorldWidget extends React.Component {
               onChange={this.handleChange}
             />
         </form>
+        <Arrows arrows={this.props.arrows} />
       </div>
     );
   }

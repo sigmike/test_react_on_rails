@@ -32,12 +32,13 @@ class HelloWorld extends React.Component {
     const actions = bindActionCreators(helloWorldActionCreators, dispatch);
     const { updateName } = actions;
     const name = $$helloWorldStore.get('name');
+    const arrows = $$helloWorldStore.get('arrows');
 
     // This uses the ES2015 spread operator to pass properties as it is more DRY
     // This is equivalent to:
     // <HelloWorldWidget $$helloWorldStore={$$helloWorldStore} actions={actions} />
     return (
-      <HelloWorldWidget {...{ updateName, name }} />
+      <HelloWorldWidget {...{ updateName, name, arrows }} />
     );
   }
 }
