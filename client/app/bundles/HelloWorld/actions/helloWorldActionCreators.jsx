@@ -14,9 +14,36 @@ export function editArrowStart(index) {
   };
 }
 
-export function submitArrowEdit(index) {
+export function stopArrowEdit(index) {
   return {
-    type: actionTypes.SUBMIT_ARROW_EDIT,
+    type: actionTypes.STOP_ARROW_EDIT,
     index: index,
+  };
+}
+
+export function startArrowLoading(index) {
+  return {
+    type: actionTypes.START_ARROW_LOADING,
+    index: index,
+  };
+}
+
+export function stopArrowLoading(index) {
+  return {
+    type: actionTypes.STOP_ARROW_LOADING,
+    index: index,
+  };
+}
+
+export function submitArrowEdit(index) {
+  return dispatch => {
+    dispatch(stopArrowEdit(index));
+    dispatch(startArrowLoading(index));
+    new Promise(function(resolve, reject) {
+      setTimeout(resolve, 1000);
+    }).then(() => {
+      dispatch(stopArrowEdit(index));
+      dispatch(stopArrowLoading(index));
+    });
   };
 }

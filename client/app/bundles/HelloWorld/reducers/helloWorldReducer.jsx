@@ -14,12 +14,16 @@ export default function helloWorldReducer($$state = $$initialState, action) {
       return $$state.set('name', name);
 
     case actionTypes.EDIT_ARROW_START:
-      console.log(action);
       return $$state.setIn(['arrows', action.index, 'isEditing'], true);
 
-    case actionTypes.SUBMIT_ARROW_EDIT:
-      console.log(action);
+    case actionTypes.STOP_ARROW_EDIT:
       return $$state.setIn(['arrows', action.index, 'isEditing'], false);
+
+    case actionTypes.START_ARROW_LOADING:
+      return $$state.setIn(['arrows', action.index, 'isLoading'], true);
+
+    case actionTypes.STOP_ARROW_LOADING:
+      return $$state.setIn(['arrows', action.index, 'isLoading'], false);
 
     default:
       return $$state;

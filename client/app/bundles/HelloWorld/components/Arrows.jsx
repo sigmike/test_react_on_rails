@@ -15,13 +15,16 @@ const ArrowEnd = ({x, y, onClick}) => {
   return <circle key="end" cx={x} cy={y} r={5} onClick={onClick} />;
 };
 
-const Arrow = ({start, end, isEditing, onStartClick, onEndClick}) => {
+const Arrow = ({start, end, isEditing, isLoading, onStartClick, onEndClick}) => {
   return <svg xmlns="http://www.w3.org/svg/2000"
     width={100}
     height={100}
-    fill={isEditing ? 'blue' : 'red'}>
-      <ArrowStart x={start.x} y={start.y} onClick={onStartClick} />
-      <ArrowEnd x={end.x} y={end.y} onClick={onEndClick} />
+    fill={isEditing ? 'blue' : 'red'}
+    style={isLoading ? {opacity: 0.5} : null}>
+      <g x={0}>
+        <ArrowStart x={start.x} y={start.y} onClick={onStartClick} />
+        <ArrowEnd x={end.x} y={end.y} onClick={onEndClick} />
+      </g>
   </svg>;
 }
 
