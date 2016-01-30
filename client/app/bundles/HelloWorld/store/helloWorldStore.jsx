@@ -30,9 +30,7 @@ export default props => {
     applyMiddleware(thunkMiddleware, loggerMiddleware)
   );
   const storeCreator = composedStore(createStore);
-  const store = storeCreator(reducer, initialState);
-
-  typeof window === 'object' && typeof window.devToolsExtension !== 'undefined' ? window.devToolsExtension() : f => f
+  const store = (window.devToolsExtension ? window.devToolsExtension()(storeCreator) : storeCreator)(reducer, initialState);
 
   return store;
 };
