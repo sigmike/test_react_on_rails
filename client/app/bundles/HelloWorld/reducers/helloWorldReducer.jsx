@@ -13,6 +13,14 @@ export default function helloWorldReducer($$state = $$initialState, action) {
     case actionTypes.HELLO_WORLD_NAME_UPDATE:
       return $$state.set('name', name);
 
+    case actionTypes.EDIT_ARROW_START:
+      console.log(action);
+      return $$state.setIn(['arrows', action.index, 'isEditing'], true);
+
+    case actionTypes.SUBMIT_ARROW_EDIT:
+      console.log(action);
+      return $$state.setIn(['arrows', action.index, 'isEditing'], false);
+
     default:
       return $$state;
   }

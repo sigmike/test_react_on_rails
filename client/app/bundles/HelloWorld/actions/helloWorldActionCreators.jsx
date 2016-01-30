@@ -7,9 +7,16 @@ export function updateName(name) {
   };
 }
 
-export function editArrowStart(arrow) {
+export function editArrowStart(index) {
   return {
     type: actionTypes.EDIT_ARROW_START,
-    arrow: arrow,
+    index: index,
+  };
+}
+
+export function submitArrowEdit(index) {
+  return {
+    type: actionTypes.SUBMIT_ARROW_EDIT,
+    index: index,
   };
 }

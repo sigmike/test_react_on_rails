@@ -1,7 +1,7 @@
 import React, { PropTypes } from 'react';
 import Immutable from 'immutable';
 import { connect } from 'react-redux';
-import { editArrowStart } from '../actions/helloWorldActionCreators';
+import { editArrowStart, submitArrowEdit } from '../actions/helloWorldActionCreators';
 
 const propTypes = {
   arrows: PropTypes.instanceOf(Immutable.List),
@@ -15,11 +15,11 @@ const ArrowEnd = ({x, y, onClick}) => {
   return <circle key="end" cx={x} cy={y} r={5} onClick={onClick} />;
 };
 
-const Arrow = ({start, end, onStartClick, onEndClick}) => {
+const Arrow = ({start, end, isEditing, onStartClick, onEndClick}) => {
   return <svg xmlns="http://www.w3.org/svg/2000"
     width={100}
     height={100}
-    fill={'red'}>
+    fill={isEditing ? 'blue' : 'red'}>
       <ArrowStart x={start.x} y={start.y} onClick={onStartClick} />
       <ArrowEnd x={end.x} y={end.y} onClick={onEndClick} />
   </svg>;
@@ -36,7 +36,7 @@ function Arrows({ arrows, dispatch }) {
     return <Arrow
       key={i}
       {...arrow.toJS()}
-      onStartClick={() => { dispatch(editArrowStart(arrow)); }}
+      onStartClick={() => { arrow.get('isEditing') ? dispatch(submitArrowEdit(i)) : dispatch(editArrowStart(i)); }}
     />;
   }
   return <div>{arrows.map(arrow)}</div>;
