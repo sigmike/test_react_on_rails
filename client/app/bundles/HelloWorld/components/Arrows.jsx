@@ -1,5 +1,6 @@
 import React, { PropTypes } from 'react';
 import Immutable from 'immutable';
+import { connect } from 'react-redux';
 
 const propTypes = {
   arrows: PropTypes.instanceOf(Immutable.List),
@@ -15,7 +16,13 @@ const Arrow = ({start, end}) => {
   </svg>;
 }
 
-export default function Arrows({ arrows }) {
+function select(state) {
+  return {
+    arrows: state.$$helloWorldStore.get('arrows'),
+  }
+}
+
+function Arrows({ arrows }) {
   var arrow = (arrow, i) => {
     return <Arrow key={i} {...arrow.toJS()}/>;
   }
@@ -23,3 +30,6 @@ export default function Arrows({ arrows }) {
 }
 
 Arrows.propTypes = propTypes;
+
+export default connect(select)(Arrows);
+

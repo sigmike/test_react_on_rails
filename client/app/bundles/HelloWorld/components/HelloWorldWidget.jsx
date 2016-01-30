@@ -14,7 +14,6 @@ export default class HelloWorldWidget extends React.Component {
     // passing two properties: "data" and "actions".
     updateName: PropTypes.func.isRequired,
     name: PropTypes.string.isRequired,
-    arrows: PropTypes.instanceOf(Immutable.List),
   };
 
   constructor(props, context) {
@@ -51,7 +50,7 @@ export default class HelloWorldWidget extends React.Component {
             />
         </form>
         <div style={{width: 600, height: 300, background: "#ccc", position: "relative"}}>
-          <Arrows arrows={this.props.arrows} />
+          <Arrows/>
         </div>
       </div>
     );
