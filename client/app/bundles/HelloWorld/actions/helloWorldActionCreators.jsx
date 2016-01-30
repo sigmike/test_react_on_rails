@@ -7,11 +7,28 @@ export function updateName(name) {
   };
 }
 
-export function editArrowStart(index) {
-  return {
-    type: actionTypes.EDIT_ARROW_START,
-    index: index,
-  };
+export function editArrowStart(index, startX, startY) {
+  return (dispatch) => {
+    dispatch({
+      type: actionTypes.EDIT_ARROW_START,
+      index: index,
+    });
+    const handleMove = (e) => {
+      dispatch({
+        type: actionTypes.MOVE_ARROW,
+        index: index,
+        x: e.screenX - startX,
+        y: e.screenY - startY,
+      });
+      startX = e.screenX;
+      startY = e.screenY;
+    };
+    $(document).on("mousemove", handleMove);
+    $(document).one("mouseup", (e) => {
+      $(document).off("mousemove", handleMove);
+      dispatch(submitArrowEdit(index));
+    });
+  }
 }
 
 export function stopArrowEdit(index) {

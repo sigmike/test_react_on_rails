@@ -9,6 +9,7 @@ const actionTypes = mirrorCreator([
   'STOP_ARROW_EDIT',
   'START_ARROW_LOADING',
   'STOP_ARROW_LOADING',
+  'MOVE_ARROW',
 ]);
 
 // actionTypes = {HELLO_WORLD_NAME_UPDATE: "HELLO_WORLD_NAME_UPDATE"}

@@ -25,6 +25,13 @@ export default function helloWorldReducer($$state = $$initialState, action) {
     case actionTypes.STOP_ARROW_LOADING:
       return $$state.setIn(['arrows', action.index, 'isLoading'], false);
 
+    case actionTypes.MOVE_ARROW:
+      let {x, y} = $$state.getIn(['arrows', action.index, 'start']).toJS();
+      x += action.x;
+      y += action.y;
+
+      return $$state.mergeIn(['arrows', action.index, 'start'], {x, y});
+
     default:
       return $$state;
   }
