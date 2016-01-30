@@ -37,7 +37,7 @@ export default class HelloWorldWidget extends React.Component {
     return (
       <div className="container">
         <h3>
-          Hello, {name}!
+          Hello, {name}!!!
         </h3>
         <hr/>
         <form className="form-horizontal">
@@ -50,7 +50,9 @@ export default class HelloWorldWidget extends React.Component {
               onChange={this.handleChange}
             />
         </form>
-        <Arrows arrows={this.props.arrows} />
+        <div style={{width: 600, height: 300, background: "#ccc", position: "relative"}}>
+          <Arrows arrows={this.props.arrows} />
+        </div>
       </div>
     );
   }

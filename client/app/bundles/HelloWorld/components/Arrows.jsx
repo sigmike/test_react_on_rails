@@ -6,7 +6,13 @@ const propTypes = {
 };
 
 const Arrow = ({start, end}) => {
-  return <div>{JSON.stringify(start)}</div>;
+  return <svg xmlns="http://www.w3.org/svg/2000"
+    width={100}
+    height={100}
+    fill={'red'}>
+      <circle key="start" cx={start.x} cy={start.y} r={5} />
+      <circle key="end" cx={end.x} cy={end.y} r={5} />
+  </svg>;
 }
 
 export default function Arrows({ arrows }) {
