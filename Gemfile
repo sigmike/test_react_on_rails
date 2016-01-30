@@ -46,3 +46,14 @@ group :development do
 end
 
 gem "react_on_rails", "~> 2.0.0"
+
+gem 'therubyracer', platforms: :ruby
+
+# require: false is necessary for the linters as we only want them loaded
+# when used by the linting rake tasks.
+group :development do
+  gem("rubocop", require: false)
+  gem("ruby-lint", require: false)
+  gem("scss_lint", require: false)
+end
+gem 'bootstrap-sass'
